@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Barsuk Project — Arma 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #f8f9fa;
+        }
+
+        .navbar, .footer {
+            background-color: #1f1f1f;
+        }
+
+        .nav-link, .navbar-brand {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover {
+            color: #ffa500 !important;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+            border-bottom: 2px solid #ffa500;
+        }
+
+        .btn-accent {
+            background-color: #ffa500;
+            color: #000;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body {
+            background-color: #333;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            color: #ffa500;
+        }
+
+        .card-text {
+            color: #ccc;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .faction-section {
+            margin-top: 40px;
+        }
+
+        .faction-title {
+            color: #ffa500;
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .faction-card {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Barsuk Project</a>
+        <button class="navbar-toggler" data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="guides.html">Гайды</a></li>
+                <li class="nav-item"><a class="nav-link" href="mods.html">Моды</a></li>
+                <li class="nav-item"><a class="nav-link" href="rules.html">Правила</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Главный блок -->
+<div class="hero">
+    <div class="container">
+        <h1>Фракции</h1>
+        <p>Здесь вы можете найти фракции за обе стороны</p>
+    </div>
+</div>
+
+<!-- Раздел с фракциями -->
+<div class="section">
+    <!-- ВСУ -->
+    <div class="faction-section">
+        <h3 class="faction-title">Вооружённые Силы Украины</h3>
+        <div class="row">
+            <!-- Карта 1 -->
+            <div class="col-md-4 d-flex">
+                <div class="card faction-card w-100">
+                    <img alt="АЗОВ" class="card-img-top" src="https://via.placeholder.com/300x200">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">Бригада АЗОВ</h5>
+                            <p class="card-text">Военное формирование Национальной гвардии Украины.</p>
+                        </div>
+                        <a class="btn btn-accent mt-2" href="#">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Карта 2 -->
+            <div class="col-md-4 d-flex">
+                <div class="card faction-card w-100">
+                    <img alt="3 ОШБ" class="card-img-top" src="https://via.placeholder.com/300x200">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">3 ОШБ</h5>
+                            <p class="card-text">Сформированная как ответ на новую реальность современного боя, бригада стала символом решающей силы в наступлении.</p>
+                        </div>
+                        <a class="btn btn-accent mt-2" href="#">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Карта 3 -->
+            <div class="col-md-4 d-flex">
+                <div class="card faction-card w-100">
+                    <img alt="151 ОМБР" class="card-img-top" src="https://via.placeholder.com/300x200">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">151 ОМБР</h5>
+                            <p class="card-text">Элитное боевое подразделение, способное выполнять широкий спектр задач.</p>
+                        </div>
+                        <a class="btn btn-accent mt-2" href="#">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВС РФ -->
+    <div class="faction-section">
+        <h3 class="faction-title">Вооружённые Силы Российской Федерации</h3>
+        <div class="row">
+            <!-- Карта 1 -->
+            <div class="col-md-4 d-flex">
+                <div class="card faction-card w-100">
+                    <img alt="810 ОБРМП" class="card-img-top" src="https://via.placeholder.com/300x200">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">810 ОБРМП</h5>
+                            <p class="card-text">Тактическое соединение морской пехоты в составе ВМФ СССР и ВМФ России.</p>
+                        </div>
+                        <a class="btn btn-accent mt-2" href="#">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Карта 2 -->
+            <div class="col-md-4 d-flex">
+                <div class="card faction-card w-100">
+                    <img alt="61-й ЦСО" class="card-img-top" src="https://via.placeholder.com/300x200">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">61-й ЦСО</h5>
+                            <p class="card-text">Сплочённое сообщество единомышленников.</p>
+                        </div>
+                        <a class="btn btn-accent mt-2" href="#">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<div class="footer">
+    <div class="container">
+        <p>&copy; 2025 Barsuk Project</p>
+        <p>
+            <a href="https://discord.gg/Ae3exAuTjg" target="_blank">Наш Discord</a> |
+            <a href="https://www.tiktok.com/@projectbarsuk" target="_blank">Наш TikTok</a> |
+            <a href="https://www.youtube.com/@ProjectBarsuk" target="_blank">Наш YouTube</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

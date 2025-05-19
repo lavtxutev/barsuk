@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Гайды — Barsuk Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #f8f9fa;
+        }
+
+        .navbar, .footer {
+            background-color: #1f1f1f;
+        }
+
+        .nav-link, .navbar-brand {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover {
+            color: #ffa500 !important;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+            border-bottom: 2px solid #ffa500;
+        }
+
+        .btn-accent {
+            background-color: #ffa500;
+            color: #000;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .guide-card {
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .guide-card .card-body {
+            background-color: #333;
+        }
+
+        .guide-card .card-title {
+            color: #ffa500;
+        }
+
+        .guide-card .card-text {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Barsuk Project</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="factions.html">Фракции</a></li>
+                <li class="nav-item"><a class="nav-link" href="mods.html">Моды</a></li>
+                <li class="nav-item"><a class="nav-link" href="rules.html">Правила</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Заголовок -->
+<div class="hero">
+    <div class="container">
+        <h1>Гайды</h1>
+        <p>Краткие инструкции по установке и подключению к серверу</p>
+    </div>
+</div>
+
+<!-- Контент -->
+<div class="section container">
+    <div class="row">
+
+        <!-- Гайд 1 -->
+        <div class="col-md-6">
+            <div class="card guide-card">
+                <div class="card-body">
+                    <h5 class="card-title">Как скачать пресет</h5>
+                    <p class="card-text">1. <a href="mods.html">Перейдите по ссылке на пресет</a><br>
+                        2. Нажмите "Подписаться на всё"<br>
+                        3. Запустите Arma 3 Launcher<br>
+                        4. В разделе "Mods" нажмите "Import" и выберите скачанный файл пресета<br>
+                        5. Нажмите "Play with Mods"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Гайд 2 -->
+        <div class="col-md-6">
+            <div class="card guide-card">
+                <div class="card-body">
+                    <h5 class="card-title">Как подключиться к серверу</h5>
+                    <p class="card-text">1. Запустите игру через лаунчер с нужным пресетом<br>
+                        2. Откройте вкладку "Сетевая игра"<br>
+                        3. Нажмите "Прямое подключение"<br>
+                        4. Введите IP сервера и нажмите "Подключиться"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Гайд 3 -->
+        <div class="col-md-6">
+            <div class="card guide-card">
+                <div class="card-body">
+                    <h5 class="card-title">Как пользоваться TeamSpeak</h5>
+                    <p class="card-text">1. Скачайте TeamSpeak 3 с официального сайта<br>
+                        2. Установите плагин TFAR (Task Force Arrowhead Radio)<br>
+                        3. Подключитесь к TS-серверу (IP указывается в Discord или на сайте)<br>
+                        4. Убедитесь, что у вас включён плагин TFAR (вверху → Plugins)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Гайд 4 -->
+        <div class="col-md-6">
+            <div class="card guide-card">
+                <div class="card-body">
+                    <h5 class="card-title">Если что-то не работает</h5>
+                    <p class="card-text">1. Убедитесь, что все моды загружены и обновлены<br>
+                        2. Удалите и повторно загрузите проблемные моды<br>
+                        3. Проверьте, что вы используете правильный пресет<br>
+                        4. Обратитесь за помощью в наш Discord
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Barsuk Project — Arma 3</p>
+        <p>
+            <a href="#">Наш Discord</a> |
+            <a href="#">Гайды</a> |
+            <a href="#">Моды</a> |
+            <a href="#">Правила</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
