@@ -1,133 +1,128 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <title>Фракция — Barsuk Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #111;
-            color: #f8f9fa;
-        }
+  <meta charset="utf-8">
+  <title>Фракции — Barsuk Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #111;
+      color: #f8f9fa;
+    }
 
-        .navbar, .footer {
-            background-color: #1f1f1f;
-        }
+    .navbar, .footer {
+      background-color: #1f1f1f;
+    }
 
-        .nav-link, .navbar-brand {
-            color: #f8f9fa !important;
-        }
+    .nav-link, .navbar-brand {
+      color: #f8f9fa !important;
+    }
 
-        .nav-link:hover {
-            color: #ffa500 !important;
-        }
+    .nav-link:hover {
+      color: #ffa500 !important;
+    }
 
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            border-top: 1px solid #333;
-        }
+    .card {
+      background-color: #1f1f1f;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px;
+      color: #f8f9fa;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
 
-        .footer a {
-            color: #ffa500;
-            text-decoration: none;
-        }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(255,165,0,0.2);
+    }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
 
-        .faction-card {
-            background-color: #1f1f1f;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 30px;
-            margin: 60px auto;
-            max-width: 700px;
-            box-shadow: 0 0 20px rgba(255, 165, 0, 0.1);
-        }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #333;
+    }
 
-        .faction-card img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+    .footer a {
+      color: #ffa500;
+      text-decoration: none;
+    }
 
-        .faction-card h1 {
-            color: #ffa500;
-        }
-
-        .label {
-            font-weight: bold;
-            color: #ccc;
-        }
-    </style>
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Barsuk Project</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="guides.html">Гайды</a></li>
-                <li class="nav-item"><a class="nav-link" href="factions.html">Фракции</a></li>
-                <li class="nav-item"><a class="nav-link" href="mods.html">Моды</a></li>
-                <li class="nav-item"><a class="nav-link" href="rules.html">Правила</a></li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Barsuk Project</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="guides.html">Гайды</a></li>
+        <li class="nav-item"><a class="nav-link active" href="factions.html">Фракции</a></li>
+        <li class="nav-item"><a class="nav-link" href="mods.html">Моды</a></li>
+        <li class="nav-item"><a class="nav-link" href="rules.html">Правила</a></li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <div class="container">
-    <div class="faction-card text-center" id="faction-container">
-        <p>Загрузка...</p>
-    </div>
+  <h1 class="mt-5 text-center">Список фракций</h1>
+  <div class="row" id="factions-list">
+    <!-- Карточки будут подставлены сюда -->
+  </div>
 </div>
 
 <div class="footer">
-    <div class="container">
-        <p>&copy; 2025 Barsuk Project</p>
-        <p>
-            <a href="https://discord.gg/Ae3exAuTjg" target="_blank">Наш Discord</a> |
-            <a href="https://www.tiktok.com/@projectbarsuk" target="_blank">Наш TikTok</a> |
-            <a href="https://www.youtube.com/@ProjectBarsuk" target="_blank">Наш YouTube</a>
-        </p>
-    </div>
+  <div class="container">
+    <p>&copy; 2025 Barsuk Project</p>
+    <p>
+      <a href="https://discord.gg/Ae3exAuTjg" target="_blank">Наш Discord</a> |
+      <a href="https://www.tiktok.com/@projectbarsuk" target="_blank">Наш TikTok</a> |
+      <a href="https://www.youtube.com/@ProjectBarsuk" target="_blank">Наш YouTube</a>
+    </p>
+  </div>
 </div>
 
 <script>
-const container = document.getElementById('faction-container');
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
-
-if (!id) {
-    container.innerHTML = '<p class="text-danger">ID фракции не указан</p>';
-} else {
-    fetch(`https://youraccount.infinityfreeapp.com/api.php?id=${id}`)
-        .then(response => {
-            if (!response.ok) throw new Error("Фракция не найдена");
-            return response.json();
-        })
-        .then(faction => {
-            container.innerHTML = `
-                <img src="${faction.emblem}" alt="Эмблема">
-                <h1>${faction.name}</h1>
-                <p><span class="label">Сторона:</span> ${faction.side}</p>
-                <p><span class="label">Командир:</span> ${faction.commander}</p>
-                <p><span class="label">Discord:</span> ${faction.discord}</p>
-                <p><span class="label">Описание:</span><br>${faction.description.replace(/\n/g, "<br>")}</p>
-            `;
-        })
-        .catch(error => {
-            container.innerHTML = `<p class="text-danger">${error.message}</p>`;
-        });
-}
+fetch("https://bbend.infinityfreeapp.com/api.php?all=true")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("factions-list");
+    for (const id in data) {
+      const f = data[id];
+      const card = document.createElement("div");
+      card.className = "col-md-4";
+      card.innerHTML = `
+        <a href="faction.html?id=${id}" style="text-decoration: none;">
+          <div class="card">
+            <img src="${f.emblem}" alt="${f.name}">
+            <h4>${f.name}</h4>
+            <p>${f.side}</p>
+          </div>
+        </a>
+      `;
+      container.appendChild(card);
+    }
+  })
+  .catch(error => {
+    document.getElementById("factions-list").innerHTML = "<p class='text-danger'>Ошибка загрузки фракций.</p>";
+  });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
