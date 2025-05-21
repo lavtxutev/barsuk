@@ -1,0 +1,50 @@
+{
+  "uafor1": {
+    "name": "12-та бригада 'Азов'",
+    "side": "ВСУ",
+    "description": "Штурмовая механизированная бригада, активно участвующая в наступательных операциях. Отличается высокой мотивацией, дисциплиной и наличием западного вооружения.",
+    "discord": "N/D",
+    "emblem": "https://upload.wikimedia.org/wikipedia/commons/f/fa/AZOV_logo.svg",
+    "commander": "Fritz"
+  },
+  "uafor2": {
+    "name": "3-я Отдельная Штурмовая Бригада",
+    "side": "ВСУ",
+    "description": "3-й отдельный штурмовой батальон — подразделение с фокусом на ведение боевых действий в урбанизированной и лесистой местности. Высокая мобильность и адаптивность.",
+    "discord": "N/D",
+    "emblem": "https://upload.wikimedia.org/wikipedia/commons/f/fe/3rd_Assault_Brigade.png",
+    "commander": "Z1pSPB"
+  },
+  "uafor3": {
+    "name": "ГУР МО",
+    "side": "ВСУ",
+    "description": "Спецподразделение Тимура — элитная группа ГУР МО. Основные задачи: разведка, устранение целей и глубокие рейды за линией фронта. Девиз: 'Тень и сталь'.",
+    "discord": "N/D",
+    "emblem": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Emblem_of_the_Defense_Intelligence_of_Ukraine.png/250px-Emblem_of_the_Defense_Intelligence_of_Ukraine.png",
+    "commander": "Kozak"
+  },
+  "rufor1": {
+    "name": "810-я отдельная бригада морской пехоты",
+    "side": "ВС РФ",
+    "description": "810-я отдельная бригада морской пехоты — многоцелевая штурмовая единица флота. Участвует в десантных операциях, зачистках и удержании прибрежных направлений.",
+    "discord": "N/D",
+    "emblem": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Sleeve_patch_of_the_810th_Guards_Order_of_Zhukov_Naval_Infantry_Brigade.svg/250px-Sleeve_patch_of_the_810th_Guards_Order_of_Zhukov_Naval_Infantry_Brigade.svg.png",
+    "commander": "Intelligent"
+  },
+  "rufor2": {
+    "name": "2-Я ОБРСП ГРУ ГШ",
+    "side": "ВС РФ",
+    "description": "2-я отдельная бригада специального назначения ГРУ — разведка, диверсии и поддержка наступлений. Специализация — скрытные действия, рейды, захват ключевых объектов.",
+    "discord": "N/D",
+    "emblem": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Sleeve_patch_of_the_2nd_Separate_Special_Purpose_Brigade.svg/330px-Sleeve_patch_of_the_2nd_Separate_Special_Purpose_Brigade.svg.png",
+    "commander": "Оплот"
+  },
+  "rufor3": {
+    "name": "61-й ЦСО 'Риф'",
+    "side": "ВС РФ",
+    "description": "61-ый ЦСО 'Риф' — это сплочённое сообщество единомышленников. Наш коллектив — это не просто группа людей, а настоящая команда, где каждый находит своё место и может раскрыть свой потенциал.",
+    "discord": "N/D",
+    "emblem": "img/rifrufor.png",
+    "commander": "N/D"
+  }
+}

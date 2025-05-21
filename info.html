@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Инфо — Barsuk Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .navbar, .footer {
+            background-color: #1f1f1f;
+        }
+
+        .nav-link, .navbar-brand {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover {
+            color: #ffa500 !important;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+            border-bottom: 2px solid #ffa500;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .info-block {
+            background-color: #1a1a1a;
+            border-left: 4px solid #ffa500;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ffa500;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ffa500;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #ffa500;
+        }
+
+        td {
+            background-color: #222;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><strong>Barsuk Project</strong></a>
+        <button class="navbar-toggler" data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse"
+                type="button" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="guides.html">Гайды</a></li>
+                <li class="nav-item"><a class="nav-link" href="factions.html">Фракции</a></li>
+                <li class="nav-item"><a class="nav-link" href="mods.html">Моды</a></li>
+                <li class="nav-item"><a class="nav-link" href="rules.html">Правила</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="container">
+        <h1>Информация о сервере</h1>
+        <p>Технические детали и расписание хостов</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+
+        <div class="info-block">
+            <h4>Arma 3</h4>
+            <p><strong>IP:</strong> <code>141.95.14.187</code></p>
+            <p><strong>Порт:</strong> <code>26995</code></p>
+            <p><strong>Пароль:</strong> <code>###</code></p>
+        </div>
+
+        <div class="info-block">
+            <h4>TeamSpeak </h4>
+            <p><strong>IP:</strong> <code>162.19.197.214:20020</code></p>
+            <p><strong>Пароль:</strong> <code>###</code></p>
+        </div>
+
+        <div class="info-block">
+            <h4>Расписание хостов</h4>
+            <div id="schedule">Загрузка расписания...</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <p>&copy; 2025 Barsuk Project</p>
+        <p>
+            <a href="https://discord.gg/Ae3exAuTjg" target="_blank" rel="noopener noreferrer">Наш Discord</a> |
+            <a href="https://www.tiktok.com/@projectbarsuk" target="_blank" rel="noopener noreferrer">Наш TikTok</a> |
+            <a href="https://www.youtube.com/@ProjectBarsuk" target="_blank" rel="noopener noreferrer">Наш YouTube</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    fetch('https://docs.google.com/spreadsheets/d/1jEXVTBnL2P292US3AwBxs-q4qWTHhdWYM62QQ40f_dA/export?format=csv&gid=0')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.text();
+        })
+        .then(csvText => {
+            const rawRows = csvText.trim().split('\n').map(row =>
+                row.split(',').map(cell => cell.trim())
+            );
+
+            const colCount = Math.max(...rawRows.map(row => row.length));
+            const nonEmptyColumns = [];
+
+            for (let col = 0; col < colCount; col++) {
+                const hasData = rawRows.some(row => (row[col] && row[col].trim() !== ""));
+                if (hasData) nonEmptyColumns.push(col);
+            }
+
+            const cleanedRows = rawRows.map(row => nonEmptyColumns.map(col => row[col] || ''));
+
+            let html = '<table>';
+            cleanedRows.forEach((row, i) => {
+                html += '<tr>';
+                row.forEach(cell => {
+                    html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</table>';
+            document.getElementById('schedule').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки расписания:', error);
+            document.getElementById('schedule').textContent = 'Ошибка загрузки расписания.';
+        });
+</script>
+
+
+
+</body>
+</html>
