@@ -172,15 +172,50 @@
             }
 
             const cleanedRows = rawRows.map(row => nonEmptyColumns.map(col => row[col] || ''));
+            const headers = cleanedRows[0];
+            const dataRows = cleanedRows.slice(1);
+
+            // Массив для хранения информации о rowspan
+            const spanMatrix = Array.from({ length: dataRows.length }, () =>
+                Array(headers.length).fill({ rowspan: 1, render: true })
+            );
+
+            for (let col = 0; col < headers.length; col++) {
+                let lastValue = null;
+                let startIdx = 0;
+
+                for (let row = 0; row <= dataRows.length; row++) {
+                    const cell = row < dataRows.length ? dataRows[row][col] : null;
+
+                    if (cell !== lastValue) {
+                        const span = row - startIdx;
+                        if (span > 1) {
+                            spanMatrix[startIdx][col] = { rowspan: span, render: true };
+                            for (let k = startIdx + 1; k < row; k++) {
+                                spanMatrix[k][col] = { rowspan: 0, render: false };
+                            }
+                        }
+                        startIdx = row;
+                        lastValue = cell;
+                    }
+                }
+            }
 
             let html = '<table>';
-            cleanedRows.forEach((row, i) => {
+            html += '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+
+            for (let row = 0; row < dataRows.length; row++) {
                 html += '<tr>';
-                row.forEach(cell => {
-                    html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
-                });
+                for (let col = 0; col < headers.length; col++) {
+                    const span = spanMatrix[row][col];
+                    if (span.render) {
+                        const rowspanAttr = span.rowspan > 1 ? ` rowspan="${span.rowspan}"` : '';
+                        html += `<td${rowspanAttr}>${dataRows[row][col]}</td>`;
+                    }
+                }
                 html += '</tr>';
-            });
+            }
+
             html += '</table>';
             document.getElementById('schedule').innerHTML = html;
         })
@@ -189,6 +224,7 @@
             document.getElementById('schedule').textContent = 'Ошибка загрузки расписания.';
         });
 </script>
+
 
 
 
