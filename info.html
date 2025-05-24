@@ -150,24 +150,21 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <script>
     fetch('https://docs.google.com/spreadsheets/d/1jEXVTBnL2P292US3AwBxs-q4qWTHhdWYM62QQ40f_dA/export?format=csv&gid=0')
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
+        .then(res => res.text())
         .then(csvText => {
-            const rawRows = csvText.trim().split('\n').map(row =>
-                row.split(',').map(cell => cell.trim())
-            );
+            const parsed = Papa.parse(csvText.trim(), { skipEmptyLines: 'greedy' });
+            const rawRows = parsed.data;
 
+            // Удаляем пустые столбцы
             const colCount = Math.max(...rawRows.map(row => row.length));
             const nonEmptyColumns = [];
 
             for (let col = 0; col < colCount; col++) {
-                const hasData = rawRows.some(row => (row[col] && row[col].trim() !== ""));
+                const hasData = rawRows.some(row => (row[col] && row[col].trim() !== ''));
                 if (hasData) nonEmptyColumns.push(col);
             }
 
@@ -175,7 +172,7 @@
             const headers = cleanedRows[0];
             const dataRows = cleanedRows.slice(1);
 
-            // Массив для хранения информации о rowspan
+            // rowspan логика
             const spanMatrix = Array.from({ length: dataRows.length }, () =>
                 Array(headers.length).fill({ rowspan: 1, render: true })
             );
@@ -186,7 +183,6 @@
 
                 for (let row = 0; row <= dataRows.length; row++) {
                     const cell = row < dataRows.length ? dataRows[row][col] : null;
-
                     if (cell !== lastValue) {
                         const span = row - startIdx;
                         if (span > 1) {
@@ -201,8 +197,10 @@
                 }
             }
 
-            let html = '<table>';
-            html += '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+            // Таблица
+            let html = '<table><thead><tr>';
+            html += headers.map(h => `<th>${h}</th>`).join('');
+            html += '</tr></thead><tbody>';
 
             for (let row = 0; row < dataRows.length; row++) {
                 html += '<tr>';
@@ -216,7 +214,7 @@
                 html += '</tr>';
             }
 
-            html += '</table>';
+            html += '</tbody></table>';
             document.getElementById('schedule').innerHTML = html;
         })
         .catch(error => {
@@ -224,6 +222,7 @@
             document.getElementById('schedule').textContent = 'Ошибка загрузки расписания.';
         });
 </script>
+
 
 
 
