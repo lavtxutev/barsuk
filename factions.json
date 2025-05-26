@@ -1,12 +1,4 @@
 {
-  "_uafor1_commented": {
-    "name": "12-та бригада 'Азов'",
-    "side": "ВСУ",
-    "description": "Штурмовая механизированная бригада, активно участвующая в наступательных операциях. Отличается высокой мотивацией, дисциплиной и наличием западного вооружения.",
-    "discord": "N/D",
-    "emblem": "https://upload.wikimedia.org/wikipedia/commons/f/fa/AZOV_logo.svg",
-    "commander": "Fritz"
-  },
   "uafor2": {
     "name": "3-я Отдельная Штурмовая Бригада",
     "side": "ВСУ",
